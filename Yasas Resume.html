@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yasas Banuka - Resume</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .cv-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .name {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(45deg, #fff, #e8f4fd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .title {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-2px);
+        }
+
+        .contact-item i {
+            font-size: 1.1rem;
+            color: #74b9ff;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 0;
+        }
+
+        .sidebar {
+            background: linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 2rem;
+            border-right: 3px solid #74b9ff;
+        }
+
+        .content {
+            padding: 2rem;
+        }
+
+        .section {
+            margin-bottom: 2.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideIn 0.8s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.2s; }
+        .section:nth-child(2) { animation-delay: 0.4s; }
+        .section:nth-child(3) { animation-delay: 0.6s; }
+        .section:nth-child(4) { animation-delay: 0.8s; }
+
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #74b9ff;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-title i {
+            color: #74b9ff;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #2c3e50;
+            transition: width 0.3s ease;
+        }
+
+        .section:hover .section-title::after {
+            width: 100px;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            text-align: justify;
+            padding: 1rem;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border-radius: 10px;
+            border-left: 4px solid #74b9ff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .education-item, .experience-item, .project-item {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 4px solid #74b9ff;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .education-item::before, .experience-item::before, .project-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(116, 185, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .education-item:hover::before, .experience-item:hover::before, .project-item:hover::before {
+            left: 100%;
+        }
+
+        .education-item:hover, .experience-item:hover, .project-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .item-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.3rem;
+        }
+
+        .item-subtitle {
+            font-size: 1.1rem;
+            color: #74b9ff;
+            font-weight: 500;
+        }
+
+        .item-date {
+            font-size: 0.95rem;
+            color: #666;
+            font-weight: 500;
+            background: #f8f9fa;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            border: 1px solid #e9ecef;
+        }
+
+        .item-description {
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .item-description ul {
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .item-description li {
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .item-description li::marker {
+            color: #74b9ff;
+        }
+
+        .tech-stack {
+            margin-top: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-tag {
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .tech-tag:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(116, 185, 255, 0.3);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-top: 4px solid #74b9ff;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-category h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-item {
+            background: #f8f9fa;
+            color: #2c3e50;
+            padding: 0.4rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            background: #74b9ff;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+
+        .certificate-item {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            border-left: 3px solid #74b9ff;
+            transition: all 0.3s ease;
+        }
+
+        .certificate-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .certificate-name {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.3rem;
+        }
+
+        .certificate-issuer {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .activities-list {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .activity-item {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            border-left: 3px solid #74b9ff;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .activity-item:hover {
+            transform: translateX(5px);
+        }
+
+        .activity-icon {
+            font-size: 1.5rem;
+            color: #74b9ff;
+            min-width: 40px;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #74b9ff;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            color: #0984e3;
+            transform: translateX(3px);
+        }
+
+        .print-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(116, 185, 255, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .print-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(116, 185, 255, 0.4);
+        }
+
+        .print-button i {
+            font-size: 1.1rem;
+        }
+
+        @media print {
+            .print-button {
+                display: none !important;
+            }
+            * {
+                -webkit-print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+            
+            body {
+                background: white !important;
+                font-size: 12pt;
+                line-height: 1.4;
+            }
+            
+            .cv-container {
+                box-shadow: none !important;
+                border-radius: 0 !important;
+                max-width: none !important;
+                margin: 0 !important;
+            }
+            
+            .header {
+                background: #2c3e50 !important;
+                page-break-inside: avoid;
+            }
+            
+            .main-content {
+                display: block !important;
+            }
+            
+            .sidebar {
+                width: 100% !important;
+                border-right: none !important;
+            }
+            
+            .section {
+                page-break-inside: avoid;
+                margin-bottom: 1.5rem !important;
+            }
+            
+            .education-item, .experience-item, .project-item {
+                page-break-inside: avoid;
+                box-shadow: none !important;
+                border: 1px solid #ddd !important;
+            }
+            
+            .section-title {
+                color: #2c3e50 !important;
+                border-bottom: 2px solid #74b9ff !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .cv-container {
+                margin: 1rem;
+                border-radius: 10px;
+            }
+            
+            .name {
+                font-size: 2.5rem;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                border-right: none;
+                border-bottom: 3px solid #74b9ff;
+            }
+            
+            .item-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .item-date {
+                margin-top: 0.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                padding: 2rem 1rem;
+            }
+            
+            .name {
+                font-size: 2rem;
+            }
+            
+            .content, .sidebar {
+                padding: 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cv-container">
+        <header class="header">
+            <div class="header-content">
+                <h1 class="name">Yasas Banuka</h1>
+                <p class="title">Undergraduate | IT Enthusiast</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Colombo, Sri Lanka</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>(94) 70-140-5371</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>ybanuka2003@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <span>linkedin.com/in/yasasbanuka</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <aside class="sidebar">
+                <section class="section">
+                    <h2 class="section-title">
+                        <i class="fas fa-user"></i>
+                        About Me
+                    </h2>
+                    <div class="about-text">
+                        Passionate Software Engineering and Network Engineering undergraduate with hands-on experience in full-stack development across mobile, web, and desktop platforms. Skilled in Java, JavaScript, Android development, and database management, with practical experience building e-commerce solutions, IoT systems, and enterprise applications. Currently contributing to open-source projects while pursuing dual degrees. Committed to continuous learning and applying cutting-edge technologies to solve real-world problems.
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">
+                        <i class="fas fa-code"></i>
+                        Core Skills
+                    </h2>
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h3>Programming Languages</h3>
+                            <div class="skill-list">
+                                <span class="skill-item">Java</span>
+                                <span class="skill-item">JavaScript</span>
+                                <span class="skill-item">CSS</span>
+                                <span class="skill-item">SQL</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h3>Frameworks</h3>
+                            <div class="skill-list">
+                                <span class="skill-item">Spring Boot</span>
+                                <span class="skill-item">React JS</span>
+                                <span class="skill-item">Bootstrap</span>
+                                <span class="skill-item">React Native</span>
+                                <span class="skill-item">Expo</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h3>CMS & Others</h3>
+                            <div class="skill-list">
+                                <span class="skill-item">WordPress</span>
+                                <span class="skill-item">Elementor</span>
+                                <span class="skill-item">Firebase</span>
+                                <span class="skill-item">Git</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">
+                        <i class="fas fa-users"></i>
+                        Activities
+                    </h2>
+                    <div class="activities-list">
+                        <div class="activity-item">
+                            <i class="fas fa-microchip activity-icon"></i>
+                            <div>
+                                <div class="certificate-name">IEEE Student Branch</div>
+                                <div class="certificate-issuer">University of Vocational Technology</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <i class="fas fa-rocket activity-icon"></i>
+                            <div>
+                                <div class="certificate-name">SEDS Student Branch</div>
+                                <div class="certificate-issuer">University of Vocational Technology</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <i class="fas fa-heart activity-icon"></i>
+                            <div>
+                                <div class="certificate-name">Leo Club</div>
+                                <div class="certificate-issuer">Colombo Grand Circle</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <i class="fas fa-robot activity-icon"></i>
+                            <div>
+                                <div class="certificate-name">Robotic And Innovators Club</div>
+                                <div class="certificate-issuer">Mahinda Rajapaksha College</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </aside>
+
+            <main class="content">
+                <section class="section">
+                    <h2 class="section-title">
+                        <i class="fas fa-graduation-cap"></i>
+                        Education
+                    </h2>
+                    <div class="education-item">
+                        <div class="item-header">
+                            <div>
+                                <div class="item-title">Bachelor of Technology</div>
+                                <div class="item-subtitle">University of Vocational Technology</div>
+                            </div>
+                            <div class="item-date">May 2024 - Present</div>
+                        </div>
+                        <div class="item-description">
+                            Network Engineering
+                        </div>
+                    </div>
+                    <div class="education-item">
+                        <div class="item-header">
+                            <div>
+                                <div class="item-title">Bachelor of Engineering (Hons)</div>
+                                <div class="item-subtitle">IIC University of Technology</div>
+                            </div>
+                            <div class="item-date">Aug 2021 - Present</div>
+                        </div>
+                        <div class="item-description">
+                            Software Engineering
+                        </div>
+                    </div>
+                    <div class="education-item">
+                        <div class="item-header">
+                            <div>
+                                <div class="item-title">G.C.E Advanced Level</div>
+                                <div class="item-subtitle">Mahinda Rajapaksha College - Homagama</div>
+                            </div>
+                            <div class="item-date">Jan 2014 - Jan 2022</div>
+                        </div>
+                        <div class="item-description">
+                            Technology Stream
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">
+                        <i class="fas fa-briefcase"></i>
+                        Work Experience
+                    </h2>
+                    <div class="experience-item">
+                        <div class="item-header">
+                            <div>
+                                <div class="item-title">Web Developer</div>
+                                <div class="item-subtitle">Western Digital Computer Systems & Electronics (PVT) LTD</div>
+                            </div>
+                            <div class="item-date">Jul 2023 - Apr 2024</div>
+                        </div>
+                        <div class="item-description">
+                            <ul>
+                                <li>Developed and maintained three company websites, ensuring a seamless user experience</li>
+                                <li>Managed social media strategy, content creation, and ad campaigns to boost engagement</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="experience-item">
+                        <div class="item-header">
+                            <div>
+                                <div class="item-title">Web Developer</div>
+                                <div class="item-subtitle">Freelancer.com</div>
+                            </div>
+                            <div class="item-date">Sep 2021 - Jun 2023</div>
+                        </div>
+                        <div class="item-description">
+                            Remote freelance web development projects
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">
+                        <i class="fas fa-project-diagram"></i>
+                        Projects
+                    </h2>
+                    <div class="project-item">
+                        <div class="item-header">
+                            <div>
+                                <div class="item-title">Data Monetization Software System</div>
+                                <div class="item-subtitle">r-pac Printcare Lanka (Pvt) Ltd</div>
+                            </div>
+                        </div>
+                        <div class="item-description">
+                            <p><strong>Software Developer - Production Module</strong></p>
+                            <ul>
+                                <li>Contributed to a desktop-based data monetization system focusing on the production module</li>
+                                <li>Implemented automated workflow management and centralized data recording</li>
+                                <li>Collaborated with stakeholders to translate requirements into functional software solutions</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Java SE</span>
+                                <span class="tech-tag">MySQL</span>
+                            </div>
+                            <a href="https://github.com/YasasBanuka/RPac-Data-Monetization-System" class="project-link">
+                                <i class="fab fa-github"></i>
+                                View Project
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="item-header">
+                            <div>
+                                <div class="item-title">ConsultConnect</div>
+                                <div class="item-subtitle">Android M-Commerce Application</div>
+                            </div>
+                        </div>
+                        <div class="item-description">
+                            <ul>
+                                <li>Developed a mobile application connecting users with professional consultants across industries</li>
+                                <li>Designed and implemented user authentication, profile management, and consultant directory</li>
+                                <li>Created a secure in-app payment system and real-time booking functionality</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Java</span>
+                                <span class="tech-tag">XML</span>
+                                <span class="tech-tag">Android SDK</span>
+                                <span class="tech-tag">SQLite</span>
+                                <span class="tech-tag">Firebase</span>
+                                <span class="tech-tag">Google Maps API</span>
+                            </div>
+                            <a href="https://github.com/YasasBanuka/ConsultConnect" class="project-link">
+                                <i class="fab fa-github"></i>
+                                View Project
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="item-header">
+                            <div>
+                                <div class="item-title">QuickCart</div>
+                                <div class="item-subtitle">Mobile Food Delivery Application</div>
+                            </div>
+                        </div>
+                        <div class="item-description">
+                            <ul>
+                                <li>Built a comprehensive food delivery application to enhance ordering experience</li>
+                                <li>Implemented Firebase Authentication for user management and Realtime Database for food data</li>
+                                <li>Integrated PayHere payment gateway for secure transactions with notification feedback</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Android SDK</span>
+                                <span class="tech-tag">Java</span>
+                                <span class="tech-tag">XML</span>
+                                <span class="tech-tag">Firebase</span>
+                            </div>
+                            <a href="https://github.com/YasasBanuka/QuickCart" class="project-link">
+                                <i class="fab fa-github"></i>
+                                View Project
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="item-header">
+                            <div>
+                                <div class="item-title">Smart Trade</div>
+                                <div class="item-subtitle">E-commerce Platform</div>
+                            </div>
+                        </div>
+                        <div class="item-description">
+                            <ul>
+                                <li>Created a Java-based e-commerce platform with full shopping functionality</li>
+                                <li>Implemented user registration with email verification and product listing features</li>
+                                <li>Developed secure checkout process with payment gateway integration</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Java EE</span>
+                                <span class="tech-tag">Hibernate</span>
+                                <span class="tech-tag">Gson</span>
+                                <span class="tech-tag">HTML</span>
+                                <span class="tech-tag">CSS</span>
+                                <span class="tech-tag">JavaScript</span>
+                            </div>
+                            <a href="https://github.com/YasasBanuka/SmartTrade" class="project-link">
+                                <i class="fab fa-github"></i>
+                                View Project
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="item-header">
+                            <div>
+                                <div class="item-title">Smart Gas Detector</div>
+                                <div class="item-subtitle">IoT Safety System</div>
+                            </div>
+                        </div>
+                        <div class="item-description">
+                            <ul>
+                                <li>Designed an IoT-based gas detection system using MQ-2 sensor and ESP32</li>
+                                <li>Developed mobile application with React Native and Expo for real-time monitoring</li>
+                                <li>Created Java EE backend server to process sensor data and deliver alerts</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span class="tech-tag">IoT</span>
+                                <span class="tech-tag">Java EE</span>
+                                <span class="tech-tag">Gson</span>
+                                <span class="tech-tag">React Native</span>
+                                <span class="tech-tag">Expo</span>
+                            </div>
+                            <a href="https://github.com/YasasBanuka/Smart-Gas-Detector" class="project-link">
+                                <i class="fab fa-github"></i>
+                                View Project
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="item-header">
+                            <div>
+                                <div class="item-title">Adissa Holidays</div>
+                                <div class="item-subtitle">Tourism Website</div>
+                            </div>
+                        </div>
+                        <div class="item-description">
+                            <ul>
+                                <li>Developed a fully functional tourism website for Adissa Holidays, a Sri Lanka-based travel agency</li>
+                                <li>Customized front-end design using Elementor and additional custom coding</li>
+                                <li>Implemented separate admin and user dashboards for comprehensive management</li>
+                                <li>Integrated booking system with email notifications and payment processing</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span class="tech-tag">WordPress</span>
+                                <span class="tech-tag">Elementor</span>
+                                <span class="tech-tag">PHP</span>
+                                <span class="tech-tag">MySQL</span>
+                                <span class="tech-tag">HTML/CSS</span>
+                            </div>
+                            <a href="https://adissaholidays.com" class="project-link">
+                                <i class="fas fa-external-link-alt"></i>
+                                Visit Site
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">
+                        <i class="fas fa-certificate"></i>
+                        Certifications
+                    </h2>
+                    <div class="certificates-grid">
+                        <div class="certificate-item">
+                            <div class="certificate-name">Java Programming</div>
+                            <div class="certificate-issuer">Oracle Academy</div>
+                        </div>
+                        <div class="certificate-item">
+                            <div class="certificate-name">Web Development</div>
+                            <div class="certificate-issuer">FreeCodeCamp</div>
+                        </div>
+                        <div class="certificate-item">
+                            <div class="certificate-name">Database Management</div>
+                            <div class="certificate-issuer">MySQL Academy</div>
+                        </div>
+                        <div class="certificate-item">
+                            <div class="certificate-name">Android Development</div>
+                            <div class="certificate-issuer">Google Developers</div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <button class="print-button" onclick="window.print()">
+        <i class="fas fa-print"></i>
+        Print CV
+    </button>
+
+    <script>
+        // Add smooth scrolling and enhanced interactivity
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate sections on scroll
+            const sections = document.querySelectorAll('.section');
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // Add click effects to skill items
+            const skillItems = document.querySelectorAll('.skill-item');
+            skillItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    this.style.transform = 'scale(1.1)';
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1)';
+                    }, 200);
+                });
+            });
+
+            // Add hover effects to project items
+            const projectItems = document.querySelectorAll('.project-item, .education-item, .experience-item');
+            projectItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.background = 'linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%)';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    this.style.background = 'white';
+                });
+            });
+
+            // Enhanced print button with feedback
+            const printButton = document.querySelector('.print-button');
+            printButton.addEventListener('click', function() {
+                this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Preparing...';
+                setTimeout(() => {
+                    window.print();
+                    this.innerHTML = '<i class="fas fa-print"></i> Print CV';
+                }, 500);
+            });
+
+            // Add typing effect to the name (optional enhancement)
+            const nameElement = document.querySelector('.name');
+            const originalText = nameElement.textContent;
+            nameElement.textContent = '';
+            
+            let i = 0;
+            const typeWriter = () => {
+                if (i < originalText.length) {
+                    nameElement.textContent += originalText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 100);
+                }
+            };
+            
+            setTimeout(typeWriter, 1000);
+        });
+
+        // Add keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
